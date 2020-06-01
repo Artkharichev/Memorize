@@ -10,18 +10,22 @@ import SwiftUI
 
 struct ContentView: View {
     var viewModel: EmojiMemoryGame
-    
+
     var body: some View {
-        HStack {
+        var setFont : Font
+        viewModel.cards.count >= 10 ? (setFont = Font.footnote) : (setFont = Font.largeTitle)
+        
+        return HStack {
             ForEach(viewModel.cards) { card in
                 CardView(card: card).onTapGesture {
                     self.viewModel.choose(card: card)
                 }
             }
+            
         }
         .padding()
         .foregroundColor(.orange)
-        .font(Font.largeTitle)
+        .font(setFont)
     }
 }
 
@@ -39,6 +43,7 @@ struct CardView: View {
                 RoundedRectangle(cornerRadius: 10.0).fill()
             }
         }
+        .aspectRatio(2/3, contentMode: .fit)
     }
 }
 
