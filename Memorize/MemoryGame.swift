@@ -5,11 +5,14 @@
 //  Created by Артём Харичев on 01.06.2020.
 //  Copyright © 2020 Artem Kharichev. All rights reserved.
 //
+//  Model
 
 import Foundation
 
-struct MemoryGame<CardContent> where CardContent: Equatable { // Model
+struct MemoryGame<CardContent> where CardContent: Equatable {
     var cards: Array<Card>
+    
+    var score = 0
     
     var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get {
@@ -22,6 +25,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable { // Model
         }
     }
     
+    mutating func updateScore(isOk: Bool) { isOk ? (score += 2) : (score -= 1) }
+    
     mutating func choose(card: Card) {
         
         if let chosenIndex = cards.firstIndex(matching: card), !cards[chosenIndex].isFaceUp, !cards[chosenIndex].isMatched {
@@ -29,8 +34,19 @@ struct MemoryGame<CardContent> where CardContent: Equatable { // Model
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content  {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
+                    updateScore(isOk: true)
+                } else {
+                    if  self.cards[chosenIndex].alreadyBeenSeen  && self.cards[potentialMatchIndex].alreadyBeenSeen  {
+                        updateScore(isOk: false)
+                        updateScore(isOk: false)
+                    }
+                    if  self.cards[chosenIndex].alreadyBeenSeen  && !self.cards[potentialMatchIndex].alreadyBeenSeen  {
+                        updateScore(isOk: false)
+                    }
                 }
                 self.cards[chosenIndex].isFaceUp = true
+                self.cards[chosenIndex].alreadyBeenSeen = true
+                self.cards[potentialMatchIndex].alreadyBeenSeen = true
             } else {
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
@@ -53,5 +69,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable { // Model
         var isMatched = false
         var content: CardContent
         var id: Int
+        var alreadyBeenSeen = false
     }
 }

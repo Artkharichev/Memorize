@@ -5,20 +5,25 @@
 //  Created by Артём Харичев on 01.06.2020.
 //  Copyright © 2020 Artem Kharichev. All rights reserved.
 //
+//  View Model
 
 import SwiftUI
 
-class EmojiMemoryGame: ObservableObject { //View Model
+class EmojiMemoryGame: ObservableObject {
     
     //@Published -> objectWillChange.send()
-    @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+    @Published var model: MemoryGame<String>
     
-    static func createMemoryGame() -> MemoryGame<String> {
-        var emojis = ["👻","🎃","🕷","🧟‍♂️","🧛🏻‍♂️","💀","🕸","🐞","🦇","🐺","🖤","🦹🏿‍♂️"]
-        emojis.shuffle()
-        return MemoryGame<String>(numberOfPairsOfCards: Int.random(in: 3...4)) { pairIndex in
-            return emojis[pairIndex]
-        }
+    var theme = themes.randomElement()!
+    
+    init(){
+        self.model = EmojiMemoryGame.createMemoryGame(with: theme)
+    }
+    
+    static func createMemoryGame(with theme: Theme) -> MemoryGame<String> {
+        let emojis = theme.setOfEmojis.shuffled()
+        let numberOfPairsOfCards = theme.numberOfPairForShow ?? Int.random(in: 3...6)
+        return MemoryGame<String>(numberOfPairsOfCards: numberOfPairsOfCards) { emojis[$0] }
     }
     
     //MARK: - Access to the Model
@@ -26,10 +31,18 @@ class EmojiMemoryGame: ObservableObject { //View Model
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
     }
+    var score: Int {
+        model.score
+    }
     
     //MARK: - Intents
     
     func choose(card: MemoryGame<String>.Card) {
         model.choose(card: card)
+    }
+    
+    func newGame() {
+        theme = themes.randomElement()!
+        model = EmojiMemoryGame.createMemoryGame(with: theme)
     }
 }
