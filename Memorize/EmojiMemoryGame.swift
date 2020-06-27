@@ -14,7 +14,14 @@ class EmojiMemoryGame: ObservableObject {
     //@Published -> objectWillChange.send()
     @Published private var model: MemoryGame<String>
     
-    var theme = themes.randomElement()!
+    var theme = themes.randomElement()! {
+        didSet{
+            UserDefaults.standard.set(theme.json, forKey: EmojiMemoryGame.untitled)
+            print("json: \(theme.json?.utf8 ?? "nil")")
+        }
+    }
+    
+    private static let untitled = "ThemeDocument.Untitled"
     
     init(){
         self.model = EmojiMemoryGame.createMemoryGame(with: theme)

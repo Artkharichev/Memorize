@@ -13,6 +13,12 @@ struct Theme: Codable {
     var setOfEmojis: Array<String>
     var numberOfPairForShow: Int
     var themeColor: UIColor.RGB
+    
+    var json: Data? {
+       try? JSONEncoder().encode(self)
+    }
+    
+    
 }
 
 let themes: [Theme] = [
