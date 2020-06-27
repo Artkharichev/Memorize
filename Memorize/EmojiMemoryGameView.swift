@@ -18,7 +18,7 @@ struct EmojiMemoryGameView: View {
         VStack  {
             HStack{
                 
-                Text(self.viewModel.theme.name).foregroundColor(self.viewModel.theme.themeColor)
+                Text(self.viewModel.theme.name).foregroundColor(themeColor)
                 Spacer()
                 
                 Button("New Game") {
@@ -28,7 +28,7 @@ struct EmojiMemoryGameView: View {
                 }
                 .padding(.horizontal)
                 .foregroundColor(.black)
-                .background(self.viewModel.theme.themeColor)
+                .background(themeColor)
                 .cornerRadius(cornerRadius)
             }.padding()
                 .font(Font.system(size: fontSize))
@@ -42,7 +42,7 @@ struct EmojiMemoryGameView: View {
                 .padding(5)
             }
             .padding()
-            .foregroundColor(self.viewModel.theme.themeColor)
+            .foregroundColor(themeColor)
             
             Text("Score: \(self.viewModel.score)")
         }.font(Font.system(size: fontSize))
@@ -50,6 +50,9 @@ struct EmojiMemoryGameView: View {
     
     private let cornerRadius: CGFloat = 10.0
     private let fontSize: CGFloat = 32.0
+    private var themeColor: Color {
+        Color.init(self.viewModel.theme.themeColor)
+    }
 }
 
 
@@ -85,7 +88,7 @@ struct CardView: View {
                         Pie(startAngel: Angle.degrees(0-90), endAngel: Angle.degrees(-card.bonusRemaining*360-90), clockwise: true)
                         
                     }
-                }.padding(5).opacity(0.4)
+                    }.padding(5).opacity(0.4)
                 
                 Text(card.content)
                     .font(Font.system(size: fontSize(for: size)))
