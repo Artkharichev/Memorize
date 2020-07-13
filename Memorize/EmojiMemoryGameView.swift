@@ -109,10 +109,10 @@ struct CardView: View {
 
 //MARK: - Preview
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let game = EmojiMemoryGame()
-        game.choose(card: game.cards[0])
-        return EmojiMemoryGameView(viewModel: game)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let game = EmojiMemoryGame()
+//        game.choose(card: game.cards[0])
+//        return EmojiMemoryGameView(viewModel: game)
+//    }
+//}

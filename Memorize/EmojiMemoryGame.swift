@@ -14,16 +14,16 @@ class EmojiMemoryGame: ObservableObject {
     //@Published -> objectWillChange.send()
     @Published private var model: MemoryGame<String>
     
-    var theme = themes.randomElement()! {
-        didSet{
-            UserDefaults.standard.set(theme.json, forKey: EmojiMemoryGame.untitled)
-            print("json: \(theme.json?.utf8 ?? "nil")")
-        }
-    }
+    let theme: Theme
+//        didSet{
+//            UserDefaults.standard.set(theme.json, forKey: EmojiMemoryGame.untitled)
+//            print("json: \(theme.json?.utf8 ?? "nil")")
+//        }
     
-    private static let untitled = "ThemeDocument.Untitled"
+//    private static let untitled = "ThemeDocument.Untitled"
     
-    init(){
+    init(theme: Theme){
+        self.theme = theme
         self.model = EmojiMemoryGame.createMemoryGame(with: theme)
     }
     
@@ -49,7 +49,6 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     func newGame() {
-        theme = themes.randomElement()!
         model = EmojiMemoryGame.createMemoryGame(with: theme)
     }
 }
