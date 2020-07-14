@@ -16,23 +16,6 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         
         VStack  {
-            HStack{
-                
-                Text(self.viewModel.theme.name).foregroundColor(themeColor)
-                Spacer()
-                
-                Button("New Game") {
-                    withAnimation(.easeInOut) {
-                        self.viewModel.newGame()
-                    }
-                }
-                .padding(.horizontal)
-                .foregroundColor(.black)
-                .background(themeColor)
-                .cornerRadius(cornerRadius)
-            }.padding()
-                .font(Font.system(size: fontSize))
-            
             Grid (viewModel.cards) { card in
                 CardView(card: card).onTapGesture {
                     withAnimation(.linear) {
@@ -45,11 +28,25 @@ struct EmojiMemoryGameView: View {
             .foregroundColor(themeColor)
             
             Text("Score: \(self.viewModel.score)")
-        }.font(Font.system(size: fontSize))
+        }
+        .font(Font.system(size: fontSize))
+        .navigationBarItems(
+            trailing: Button(
+                action: {
+                    withAnimation(.easeInOut) {
+                        self.viewModel.newGame()
+                    }
+            }, label: {Text("New Game")})
+                .padding(.horizontal)
+            .foregroundColor(.black)
+            .background(themeColor)
+            .cornerRadius(cornerRadius)
+            .font(Font.system(size: fontSize))
+        )
     }
     
     private let cornerRadius: CGFloat = 10.0
-    private let fontSize: CGFloat = 32.0
+    private let fontSize: CGFloat = 24.0
     private var themeColor: Color {
         Color.init(self.viewModel.theme.themeColor)
     }
@@ -88,7 +85,7 @@ struct CardView: View {
                         Pie(startAngel: Angle.degrees(0-90), endAngel: Angle.degrees(-card.bonusRemaining*360-90), clockwise: true)
                         
                     }
-                    }.padding(5).opacity(0.4)
+                }.padding(5).opacity(0.4)
                 
                 Text(card.content)
                     .font(Font.system(size: fontSize(for: size)))

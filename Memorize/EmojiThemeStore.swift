@@ -5,6 +5,7 @@
 //  Created by Артём Харичев on 13.07.2020.
 //  Copyright © 2020 Artem Kharichev. All rights reserved.
 //
+//  ViewModel - Theme Store
 
 import SwiftUI
 import Combine
@@ -31,13 +32,6 @@ class EmojiThemeStore: ObservableObject {
     func addTheme() {
         themes.append(standartTheme)
     }
-    
-    private let standartTheme: Theme = Theme(
-        name: "New theme",
-        setOfEmojis: ["🙀","😻","😼","😾","😽","😹"],
-        numberOfPairForShow: 6,
-        themeColor: .init(red: 1.000, green: 0.251, blue: 1.000, alpha: 1.0)
-    )
     
     private static var userDefaultKey = "EmojiThemeStore"
 }

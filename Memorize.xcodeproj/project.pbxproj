@@ -26,6 +26,9 @@
 		67D273D324A7ACFD00CA6322 /* UIColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D273D224A7ACFD00CA6322 /* UIColor+RGBA.swift */; };
 		AC3C33AB24BC82350031BF6E /* EmojiThemeChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C33AA24BC82350031BF6E /* EmojiThemeChooserView.swift */; };
 		AC3C33AD24BC84630031BF6E /* EmojiThemeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C33AC24BC84630031BF6E /* EmojiThemeStore.swift */; };
+		AC3C33AF24BD94000031BF6E /* EmojiThemeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C33AE24BD94000031BF6E /* EmojiThemeEditor.swift */; };
+		ACB5AC3724BDE1E5008543B9 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5AC3624BDE1E5008543B9 /* ColorPalette.swift */; };
+		ACB5AC3924BE146D008543B9 /* Array+Equtable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB5AC3824BE146D008543B9 /* Array+Equtable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		67D273D224A7ACFD00CA6322 /* UIColor+RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBA.swift"; sourceTree = "<group>"; };
 		AC3C33AA24BC82350031BF6E /* EmojiThemeChooserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiThemeChooserView.swift; sourceTree = "<group>"; };
 		AC3C33AC24BC84630031BF6E /* EmojiThemeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiThemeStore.swift; sourceTree = "<group>"; };
+		AC3C33AE24BD94000031BF6E /* EmojiThemeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiThemeEditor.swift; sourceTree = "<group>"; };
+		ACB5AC3624BDE1E5008543B9 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		ACB5AC3824BE146D008543B9 /* Array+Equtable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Equtable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,12 +93,15 @@
 				67AEAA8824851F78006EFF1D /* EmojiMemoryGameView.swift */,
 				AC3C33AC24BC84630031BF6E /* EmojiThemeStore.swift */,
 				AC3C33AA24BC82350031BF6E /* EmojiThemeChooserView.swift */,
+				AC3C33AE24BD94000031BF6E /* EmojiThemeEditor.swift */,
 				679F8498248CF41000FB988B /* EmojiTheme.swift */,
+				ACB5AC3624BDE1E5008543B9 /* ColorPalette.swift */,
 				67094EA1248ECD6000DDDEEF /* Pie.swift */,
 				67094EA3248ED60800DDDEEF /* Cardify.swift */,
 				672E8AE724883FA400AFAA7C /* Grid.swift */,
 				672E8AE9248846FA00AFAA7C /* GridLayout.swift */,
 				672E8AEB24884CAA00AFAA7C /* Array+Identifiable.swift */,
+				ACB5AC3824BE146D008543B9 /* Array+Equtable.swift */,
 				672E8AED248935F000AFAA7C /* Array+Only.swift */,
 				67D273D224A7ACFD00CA6322 /* UIColor+RGBA.swift */,
 				67D273D024A7AADD00CA6322 /* EmojiMemoryExtensions.swift */,
@@ -193,9 +202,12 @@
 				67AEAA9924855085006EFF1D /* MemoryGame.swift in Sources */,
 				679F8499248CF41000FB988B /* EmojiTheme.swift in Sources */,
 				672E8AEE248935F000AFAA7C /* Array+Only.swift in Sources */,
+				ACB5AC3924BE146D008543B9 /* Array+Equtable.swift in Sources */,
 				67AEAA8924851F78006EFF1D /* EmojiMemoryGameView.swift in Sources */,
 				67094EA4248ED60800DDDEEF /* Cardify.swift in Sources */,
 				67AEAA9B248553A8006EFF1D /* EmojiMemoryGame.swift in Sources */,
+				ACB5AC3724BDE1E5008543B9 /* ColorPalette.swift in Sources */,
+				AC3C33AF24BD94000031BF6E /* EmojiThemeEditor.swift in Sources */,
 				672E8AEC24884CAA00AFAA7C /* Array+Identifiable.swift in Sources */,
 				67094EA2248ECD6000DDDEEF /* Pie.swift in Sources */,
 				672E8AEA248846FA00AFAA7C /* GridLayout.swift in Sources */,

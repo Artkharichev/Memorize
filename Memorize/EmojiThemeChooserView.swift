@@ -5,6 +5,7 @@
 //  Created by Артём Харичев on 13.07.2020.
 //  Copyright © 2020 Artem Kharichev. All rights reserved.
 //
+//  View - Theme chooser
 
 import SwiftUI
 
@@ -21,8 +22,8 @@ struct EmojiThemeChooserView: View {
                     ForEach(store.themes) { theme in
                         NavigationLink(destination:
                             EmojiMemoryGameView(viewModel: EmojiMemoryGame(theme: theme))
+                                .navigationBarTitle(theme.name)
                         ) {
-                               // Text(theme.name)
                             ThemeRow(theme: theme, editMode: self.$editMode)
                                 .environmentObject(self.store)
                         }
@@ -68,6 +69,10 @@ struct ThemeRow: View {
                     .font(Font.system(size:self.iconFontSize))
                     .onTapGesture {
                         self.showThemeEditor = true
+                }
+                .sheet(isPresented: $showThemeEditor) {
+                    EmojiThemeEditor(theme: self.theme, isShowing: self.$showThemeEditor, editMode: self.$editMode)
+                        .environmentObject(self.store)
                 }
             }
             VStack(alignment: .leading) {

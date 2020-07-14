@@ -15,12 +15,6 @@ class EmojiMemoryGame: ObservableObject {
     @Published private var model: MemoryGame<String>
     
     let theme: Theme
-//        didSet{
-//            UserDefaults.standard.set(theme.json, forKey: EmojiMemoryGame.untitled)
-//            print("json: \(theme.json?.utf8 ?? "nil")")
-//        }
-    
-//    private static let untitled = "ThemeDocument.Untitled"
     
     init(theme: Theme){
         self.theme = theme
