@@ -24,6 +24,10 @@ struct EmojiThemeEditor: View {
     @State private var color : UIColor.RGB?
     @State private var removeEmoji: [String] = []
     
+    private var maxNumberOfPairs: Int {
+        self.theme.setOfEmojis.count - self.removeEmoji.count
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
@@ -70,12 +74,12 @@ struct EmojiThemeEditor: View {
                             Text("tap emoji to exclude")
                         }
                     ) {
-                        EmojisSection(emojis: self.$emojis) { emoji in
+                        EmojisAddSection(emojis: self.$emojis) { emoji in
                             self.removeEmoji.append(emoji)
                         }
                         HStack {
                             Image(systemName: "trash")
-                            EmojisSection(emojis: self.$removeEmoji) { emoji in
+                            EmojisRemoveSection(emojis: self.$removeEmoji) { emoji in
                                 self.emojis.append(emoji)
                             }
                         }
@@ -86,7 +90,7 @@ struct EmojiThemeEditor: View {
                         HStack{
                             Text("\(self.numberOfPairs) Pairs")
                             Spacer()
-                            Stepper("", value: self.$numberOfPairs, in: 2...self.theme.setOfEmojis.count)
+                            Stepper("", value: self.$numberOfPairs, in: 2...self.maxNumberOfPairs)
                         }
                     }
                     
@@ -115,8 +119,15 @@ struct EmojiThemeEditor: View {
     func updateTheme() {
         let name = self.themeName.isEmpty ? theme.name : self.themeName
         let color = self.color ?? theme.themeColor
+        var pairs: Int {
+            if numberOfPairs > maxNumberOfPairs {
+                return maxNumberOfPairs
+            } else {
+                return numberOfPairs
+            }
+        }
         
-        let newTheme = Theme(name: name, setOfEmojis: emojis, numberOfPairForShow: numberOfPairs, themeColor: color)
+        let newTheme = Theme(name: name, setOfEmojis: emojis, numberOfPairForShow: pairs, themeColor: color)
         
         for index in store.themes.indices {
             if store.themes[index].id == theme.id {
@@ -126,7 +137,7 @@ struct EmojiThemeEditor: View {
     }
 }
 
-struct EmojisSection: View {
+struct EmojisAddSection: View {
     
     @Binding var emojis: [String]
     
@@ -136,10 +147,39 @@ struct EmojisSection: View {
         Grid(emojis, id: \.self) { emoji in
             Text(emoji).font(Font.system(size: self.fontSize))
                 .onTapGesture {
-                    if let emoji = self.emojis.removeLast(matching: emoji) {
-                        self.removeEmoji(emoji)
+                    if self.emojis.count > 2 {
+                        if let emoji = self.emojis.removeLast(matching: emoji) {
+                            self.removeEmoji(emoji)
+                        }
                     }
                     
+            }
+        }
+        .frame(height: self.height)
+    }
+    
+    //MARK: - Drawing constants
+    
+    var height: CGFloat {
+        CGFloat((emojis.count - 1) / 6) * 70 + 70
+    }
+    
+    let fontSize: CGFloat = 40
+}
+
+struct EmojisRemoveSection: View {
+    
+    @Binding var emojis: [String]
+    
+    var removeEmoji: (String) -> Void
+    
+    var body: some View {
+        Grid(emojis, id: \.self) { emoji in
+            Text(emoji).font(Font.system(size: self.fontSize))
+                .onTapGesture {
+                        if let emoji = self.emojis.removeLast(matching: emoji) {
+                            self.removeEmoji(emoji)
+                        }
             }
         }
         .frame(height: self.height)

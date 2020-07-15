@@ -88,23 +88,11 @@
 		67AEAA8324851F78006EFF1D /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
-				67AEAA9824855085006EFF1D /* MemoryGame.swift */,
-				67AEAA9A248553A8006EFF1D /* EmojiMemoryGame.swift */,
-				67AEAA8824851F78006EFF1D /* EmojiMemoryGameView.swift */,
-				AC3C33AC24BC84630031BF6E /* EmojiThemeStore.swift */,
-				AC3C33AA24BC82350031BF6E /* EmojiThemeChooserView.swift */,
-				AC3C33AE24BD94000031BF6E /* EmojiThemeEditor.swift */,
-				679F8498248CF41000FB988B /* EmojiTheme.swift */,
-				ACB5AC3624BDE1E5008543B9 /* ColorPalette.swift */,
-				67094EA1248ECD6000DDDEEF /* Pie.swift */,
-				67094EA3248ED60800DDDEEF /* Cardify.swift */,
-				672E8AE724883FA400AFAA7C /* Grid.swift */,
-				672E8AE9248846FA00AFAA7C /* GridLayout.swift */,
-				672E8AEB24884CAA00AFAA7C /* Array+Identifiable.swift */,
-				ACB5AC3824BE146D008543B9 /* Array+Equtable.swift */,
-				672E8AED248935F000AFAA7C /* Array+Only.swift */,
-				67D273D224A7ACFD00CA6322 /* UIColor+RGBA.swift */,
-				67D273D024A7AADD00CA6322 /* EmojiMemoryExtensions.swift */,
+				ACB5AC3C24BE2039008543B9 /* Views */,
+				ACB5AC3B24BE2001008543B9 /* ViewModels */,
+				ACB5AC3A24BE1FD6008543B9 /* Models */,
+				ACB5AC3E24BE20F4008543B9 /* Others */,
+				ACB5AC3D24BE206F008543B9 /* Extension */,
 				67AEAA8424851F78006EFF1D /* AppDelegate.swift */,
 				67AEAA8624851F78006EFF1D /* SceneDelegate.swift */,
 				67AEAA8A24851F7A006EFF1D /* Assets.xcassets */,
@@ -121,6 +109,58 @@
 				67AEAA8D24851F7A006EFF1D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ACB5AC3A24BE1FD6008543B9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				679F8498248CF41000FB988B /* EmojiTheme.swift */,
+				67AEAA9824855085006EFF1D /* MemoryGame.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ACB5AC3B24BE2001008543B9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				67AEAA9A248553A8006EFF1D /* EmojiMemoryGame.swift */,
+				AC3C33AC24BC84630031BF6E /* EmojiThemeStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ACB5AC3C24BE2039008543B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC3C33AA24BC82350031BF6E /* EmojiThemeChooserView.swift */,
+				67AEAA8824851F78006EFF1D /* EmojiMemoryGameView.swift */,
+				AC3C33AE24BD94000031BF6E /* EmojiThemeEditor.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ACB5AC3D24BE206F008543B9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				67D273D024A7AADD00CA6322 /* EmojiMemoryExtensions.swift */,
+				67D273D224A7ACFD00CA6322 /* UIColor+RGBA.swift */,
+				672E8AED248935F000AFAA7C /* Array+Only.swift */,
+				ACB5AC3824BE146D008543B9 /* Array+Equtable.swift */,
+				672E8AEB24884CAA00AFAA7C /* Array+Identifiable.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		ACB5AC3E24BE20F4008543B9 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				ACB5AC3624BDE1E5008543B9 /* ColorPalette.swift */,
+				67094EA1248ECD6000DDDEEF /* Pie.swift */,
+				67094EA3248ED60800DDDEEF /* Cardify.swift */,
+				672E8AE724883FA400AFAA7C /* Grid.swift */,
+				672E8AE9248846FA00AFAA7C /* GridLayout.swift */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
